@@ -130,7 +130,7 @@ Panel plot comparing the average number of steps taken per 5-minute
 interval across weekdays and weekends
 
 ```{r}
-#Generate the weekday/weekend factor
+#Generate the weekday and weekend factor
 new_data <- new_data %>%
         mutate(days_type= ifelse(weekdays(as.POSIXlt(new_data$date)) %in% c("szombat","vasárnap"),"weekend","weekday"))
 new_data$days_type=as.factor(new_data$days_type)
@@ -145,4 +145,4 @@ xyplot(mean_steps~interval|days_type, data=new_data_int, layout=c(1,2), type="l"
        main="A time series plot of the 5-minute interval per average of steps on weekend and weekday",
        xlab = "Interval",ylab="Number of steps")
 ```
-
+Based on the figures there are some differences between weekdays and weekends.
